@@ -1,5 +1,5 @@
 Project Title - Digital Detective  
-Description - 
+Description - Learn how our computer works , Practise basic Terminal operations , Explore how the Operationg System manages files and programs , Understand how numbers and test are represented , and use Github to Publish our work . 
 
 Name - Dhairya Agrawal  
 USN - 2402608011  
