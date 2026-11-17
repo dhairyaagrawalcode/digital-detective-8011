@@ -20,6 +20,14 @@ Each mission explores a specific domain of computer systems through hands-on ter
 
 ---
 
+## My Learning
+Through the hands-on missions completed so far in the Digital Detective assignment, I have acquired practical insights into:
+1. **Computer Fundamentals & The IPOS Cycle**: How hardware components (input controllers, CPU registers, RAM, GPU framebuffers, and SSD storage) collaborate systematically to receive input, compute instructions, output graphics, and persistently store data.
+2. **Command-Line Proficiency & Unix Philosophy**: Navigating filesystems safely with absolute and relative paths, understanding POSIX file permissions (`rwx`), and combining specialized tools via Unix pipes (`|`) to process streams in real-time.
+3. **Data Representation & Encodings**: Performing manual and programmatic conversions between decimal, binary, and hexadecimal systems, as well as understanding why computers rely on standard character encodings (ASCII and UTF-8) to represent textual information.
+
+---
+
 ### Mission Index
 
 | Mission | Focus / Topic | Documentation Link | Status |
