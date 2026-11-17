@@ -1,120 +1,97 @@
 # Mission 8 — Final report and submission
 
 ## 1. Task / objective
-The objective of Mission 8 is to perform a comprehensive final audit of the entire Digital Detective assignment repository. This includes validating the complete directory hierarchy, verifying that all individual mission README files adhere to the mandatory 8-section structure, ensuring that executable Python scripts run without errors, confirming that all incremental Git commits and GitHub Pull Requests are cleanly merged and published, and preparing the final project summary and submission checklist.
-
----
+The goal of Mission 8 was to do a complete final review of the whole assignment repository. I verified that all 9 mission folders are present with their own completed README files, checked that all required scripts (`hello.py` and `number_converter.py`) run cleanly, confirmed that each mission has a dedicated Git commit pushed to GitHub, verified the Pull Request, and completed the final submission checklist.
 
 ## 2. Work completed
 
-### Final Submission Checklist
+### Final Checklist Review
 
-| Item | Requirement Description | Verification Status |
+| Item | Requirement | Status |
 | :---: | :--- | :---: |
-| 1 | All mission folders are present and each has its own dedicated `README.md`. | **Verified** |
-| 2 | Every mission README follows the mandatory structure (Tasks, Commands, Understanding, Difficulties, Evidence, Commits). | **Verified** |
-| 3 | Every mission has its own meaningful commit, and all required commits are pushed to GitHub. | **Verified** |
-| 4 | IPOS, hardware, software, and real-world computer-system examples are included. | **Verified** |
-| 5 | Terminal operations, file management, command flags, and Unix pipes are fully explained. | **Verified** |
-| 6 | Operating system, processes, PIDs, paths, storage, and POSIX permissions are covered. | **Verified** |
-| 7 | Compiler and interpreter differences are thoroughly compared in tabular and written format. | **Verified** |
-| 8 | Number conversions (decimal, binary, hexadecimal) include complete manual math steps and Python verification. | **Verified** |
-| 9 | `number_converter.py` runs successfully and was validated with at least three test values. | **Verified** |
-| 10 | Git commit history, feature branch (`update-about`), and Pull Request (#1) activity are visible on GitHub. | **Verified** |
-| 11 | Networking concepts (LAN, MAN, WAN, DNS, router, protocols, packet switching, client-server) and website lifecycle are documented. | **Verified** |
-| 12 | The root `README.md` explains the project overview, mission links, learning summary, and converter execution instructions. | **Verified** |
-| 13 | Personal confidential information (passwords, tokens, private network IP addresses, Wi-Fi names) has been safely redacted or excluded. | **Verified** |
-| 14 | All final changes are pushed and live on the public GitHub repository. | **Verified** |
+| 1 | All mission folders are present and each has its own README.md. | Complete |
+| 2 | Every mission README records the task, commands/tools used, understanding and difficulties. | Complete |
+| 3 | Every mission has its own meaningful commit, and all required commits are pushed. | Complete |
+| 4 | IPOS, hardware, software and computer-system examples are included. | Complete |
+| 5 | Terminal operations, file management, flags and pipes are explained. | Complete |
+| 6 | Operating system, processes, paths, storage and permissions are covered. | Complete |
+| 7 | Compiler and interpreter are compared. | Complete |
+| 8 | Number conversions include working and Python verification. | Complete |
+| 9 | The `number_converter.py` program runs successfully with at least three test values. | Complete |
+| 10 | Git commit history, branch and Pull Request activity are visible. | Complete |
+| 11 | LAN, MAN, WAN, DNS, router, protocols and client-server are explained. | Complete |
+| 12 | The root README explains the project and how to run the converter. | Complete |
+| 13 | Personal information has been removed from screenshots and outputs. | Complete |
+| 14 | All final changes are committed and pushed to GitHub. | Complete |
 
 ---
 
-### Repository Structure Audit
-
+### Folder and File Structure Verified
 ```
 digital-detective-8011/
-├── README.md                                    # Root overview, mission index, execution guide, learnings
-├── evidence/                                    # Supporting outputs directory
-├── terminal-practice/                           # Safe practice directory from Mission 2
+├── README.md
+├── evidence/
+├── terminal-practice/
 │   ├── note.txt
 │   └── note_backup_renamed.txt
 ├── mission-00-setup/
-│   └── README.md                                # Workspace setup, tool versions (Python, Git), directory plan
+│   └── README.md
 ├── mission-01-computer-basics/
-│   └── README.md                                # IPOS activity analysis, hardware/software tables, systems
+│   └── README.md
 ├── mission-02-terminal/
-│   └── README.md                                # Command reference, safe file ops, flags, pipes, Homebrew
+│   └── README.md
 ├── mission-03-operating-system/
-│   └── README.md                                # OS details, processes, PIDs, paths, permissions, OS duties
+│   └── README.md
 ├── mission-04-programs/
-│   ├── hello.py                                 # Working Python script
-│   └── README.md                                # Execution verification, compiler vs interpreter comparison
+│   ├── hello.py
+│   └── README.md
 ├── mission-05-numbers-data/
-│   ├── number_converter.py                      # Interactive number converter CLI tool
-│   └── README.md                                # Math working, Python checks, test cases, character encoding
+│   ├── number_converter.py
+│   └── README.md
 ├── mission-06-git-github/
-│   └── README.md                                # Git workflow, update-about branch, PR #1, command glossary
+│   └── README.md
 ├── mission-07-networking/
-│   └── README.md                                # Network concepts, ping, nslookup, 6-step website lifecycle
+│   └── README.md
 └── mission-08-final-report/
-    └── README.md                                # Final audit, checklist verification, submission readiness
+    └── README.md
 ```
 
 ---
 
-### Mission Summary & Verification Log
+### Mission Completion Summary
 
-| Mission | Primary Focus | Key Artifacts Produced | Status |
-| :--- | :--- | :--- | :--- |
-| **Mission 0** | Workspace & Git setup | Repository structure, root `README.md`, tool checks | Completed & Pushed |
-| **Mission 1** | Computer fundamentals & IPOS | IPOS data flow, HW/SW taxonomy, embedded systems | Completed & Pushed |
-| **Mission 2** | Terminal & file management | CLI reference table, `terminal-practice/` files, pipes, package manager | Completed & Pushed |
-| **Mission 3** | OS, processes & permissions | OS info, process/PID breakdown, paths & permissions, OS responsibilities | Completed & Pushed |
-| **Mission 4** | How programs run | `hello.py`, compiler vs interpreter comparison table | Completed & Pushed |
-| **Mission 5** | Number systems & data | Step-by-step conversions, `number_converter.py`, ASCII/UTF-8 notes | Completed & Pushed |
-| **Mission 6** | Git, GitHub & Pull Requests | Feature branch `update-about`, Pull Request #1 merged, Git glossary | Completed & Pushed |
-| **Mission 7** | Computer networks | Network concepts table, `ping` & `nslookup` logs, 6-step web request flow | Completed & Pushed |
-| **Mission 8** | Final review & submission | Final checklist, repository tree audit, submission details | Completed & Pushed |
+- **Mission 0**: Workspace setup, checking Python and Git, creating folder structure and root README.
+- **Mission 1**: Explaining the IPOS cycle, classifying hardware and software, and identifying everyday computer systems.
+- **Mission 2**: Practicing terminal navigation, creating practice files, understanding flags, pipes, and package managers.
+- **Mission 3**: Exploring OS environment, process IDs (PID), absolute vs. relative paths, file permissions, and OS duties.
+- **Mission 4**: Writing and running `hello.py`, and comparing how compilers and interpreters work.
+- **Mission 5**: Solving manual number conversions, verifying with Python, building `number_converter.py`, and understanding text encodings.
+- **Mission 6**: Learning Git workflow, creating branch `update-about`, opening and merging Pull Request #1, and writing a Git glossary.
+- **Mission 7**: Understanding networking concepts, testing `ping` and `nslookup`, and tracing what happens when opening a website.
+- **Mission 8**: Final review, checklist verification, and updating root README.
 
 ---
 
 ## 3. Commands / tools used
-- `git log --graph --oneline --all`: Inspected the complete commit timeline and merged branch history.
-- `gh pr view 1`: Verified that Pull Request #1 was successfully reviewed and merged into `main`.
-- `python3 --version` & `git --version`: Confirmed tool dependencies.
-- Markdown editor: Formatted audit tables and submission verification metrics.
-
----
+- `git log --oneline` - Checked commit history to ensure each mission had its own separate commit.
+- `git status` - Verified no uncommitted files remained.
+- `python3 mission-04-programs/hello.py` - Verified Hello World script.
+- `python3 mission-05-numbers-data/number_converter.py` - Tested number converter script.
 
 ## 4. My understanding
-Completing the Digital Detective assignment has provided a comprehensive, connected mental model of computing. Rather than treating programming, operating systems, terminal commands, and networks as isolated silos, this project demonstrates how they seamlessly interface:
-- From keystrokes triggering hardware interrupts (Mission 1)
-- To directory structures manipulated via shell commands and pipes (Mission 2)
-- Handled by OS schedulers, memory managers, and permission arbiters (Mission 3)
-- Translating high-level logic into executable CPU instructions (Mission 4)
-- Encoded as binary bit patterns, hexadecimal words, and UTF-8 characters (Mission 5)
-- Tracked collaboratively through Git history and GitHub Pull Requests (Mission 6)
-- And routed across global packet-switched networks via DNS and TCP/IP (Mission 7).
-
----
+This whole assignment helped me connect the dots between how hardware, operating systems, code, and networks interact. In high school, these topics were mostly taught as separate theory definitions. Doing them hands-on in the terminal—creating files, managing permissions, running Python scripts, converting binary values, using Git branches, and testing DNS lookups—made everything click together into one big picture of how a computer actually works.
 
 ## 5. Difficulties faced
-Ensuring strict conformity with every heading requirement across all nine mission README files while maintaining absolute privacy and preventing accidental leakage of local network or account credentials.
-
----
+Keeping track of all the rules, especially making sure that each mission was committed separately with its own proper message before moving on to the next.
 
 ## 6. How I resolved them
-Systematically verified all nine README files against the mandatory 8-heading template provided on page 12 of the assignment specification, sanitized all command logs with privacy-safe redactions (`[redacted]`), and completed each mission gate sequentially before moving forward.
-
----
+I followed the assignment sheet step by step in order, checked `git status` after finishing each mission, made sure the README was filled out with all 8 headings, and committed and pushed before opening the next mission folder.
 
 ## 7. Evidence / files
-- Public GitHub Repository: [https://github.com/dhairyaagrawalcode/digital-detective-8011](https://github.com/dhairyaagrawalcode/digital-detective-8011)
+- Public repository: [https://github.com/dhairyaagrawalcode/digital-detective-8011](https://github.com/dhairyaagrawalcode/digital-detective-8011)
 - Merged Pull Request #1: [https://github.com/dhairyaagrawalcode/digital-detective-8011/pull/1](https://github.com/dhairyaagrawalcode/digital-detective-8011/pull/1)
-- Verified Scripts: `mission-04-programs/hello.py`, `mission-05-numbers-data/number_converter.py`
-- All nine mission README files fully documented and linked.
-
----
+- Working scripts: `hello.py` and `number_converter.py`.
 
 ## 8. Commit details
 - Commit message: `Complete final report and verify assignment submission`
-- Status: Staged, committed, and pushed to `main` branch on GitHub.
+- Pushed to: `main` branch on GitHub.

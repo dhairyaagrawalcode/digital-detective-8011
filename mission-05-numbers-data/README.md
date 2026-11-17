@@ -1,104 +1,88 @@
 # Mission 5 — Numbers and data
 
 ## 1. Task / objective
-The objective of Mission 5 is to understand how computer hardware represents and processes data at the fundamental bit and byte level. This encompasses calculating number base conversions manually (decimal, binary, and hexadecimal), verifying calculation accuracy using Python 3 built-in conversion functions, engineering an interactive CLI utility (`number_converter.py`), and analyzing text character encodings (ASCII and UTF-8).
-
----
+The goal of this mission was to learn how computers represent numbers and text using binary bits. I practiced converting numbers between decimal, binary, and hexadecimal by hand, verified my math using Python built-in functions, built a Python script (`number_converter.py`) that converts user input, and explored character encodings like ASCII and UTF-8.
 
 ## 2. Work completed
 
 ### Task 5.1 — Convert numbers by hand
 
-| Question | Step-by-Step Manual Working | Final Answer |
-| :--- | :--- | :--- |
-| **Convert decimal 13 to binary** | Repeated division by 2:<br>• $13 \div 2 = 6$, remainder **1** (LSB)<br>• $6 \div 2 = 3$, remainder **0**<br>• $3 \div 2 = 1$, remainder **1**<br>• $1 \div 2 = 0$, remainder **1** (MSB)<br>Read remainders bottom-to-top: | `1101₂` |
-| **Convert decimal 25 to binary** | Repeated division by 2:<br>• $25 \div 2 = 12$, remainder **1** (LSB)<br>• $12 \div 2 = 6$, remainder **0**<br>• $6 \div 2 = 3$, remainder **0**<br>• $3 \div 2 = 1$, remainder **1**<br>• $1 \div 2 = 0$, remainder **1** (MSB)<br>Read remainders bottom-to-top: | `11001₂` |
-| **Convert binary 1010 to decimal** | Positional expansion in base 2:<br>• $(1 \times 2^3) + (0 \times 2^2) + (1 \times 2^1) + (0 \times 2^0)$<br>• $= 8 + 0 + 2 + 0$ | `10₁₀` |
-| **Convert binary 1101 to decimal** | Positional expansion in base 2:<br>• $(1 \times 2^3) + (1 \times 2^2) + (0 \times 2^1) + (1 \times 2^0)$<br>• $= 8 + 4 + 0 + 1$ | `13₁₀` |
-| **Convert hexadecimal A to decimal** | Positional expansion in base 16:<br>• In hexadecimal, $A = 10$<br>• $(10 \times 16^0) = 10 \times 1$ | `10₁₀` |
-| **Convert hexadecimal 1F to decimal** | Positional expansion in base 16:<br>• In hexadecimal, $F = 15$<br>• $(1 \times 16^1) + (15 \times 16^0)$<br>• $= 16 + 15$ | `31₁₀` |
-| **Convert binary 1111 to hexadecimal** | Group 4 bits into base 16 digit:<br>• $(1 \times 2^3) + (1 \times 2^2) + (1 \times 2^1) + (1 \times 2^0) = 8 + 4 + 2 + 1 = 15_{10}$<br>• In hexadecimal, value 15 corresponds to digit $F$ | `F₁₆` (or `0xF`) |
+| Question | Your working and answer |
+| :--- | :--- |
+| **Convert decimal 13 to binary.** | Divide 13 by 2 repeatedly and keep track of remainders:<br>• 13 / 2 = 6 with remainder **1**<br>• 6 / 2 = 3 with remainder **0**<br>• 3 / 2 = 1 with remainder **1**<br>• 1 / 2 = 0 with remainder **1**<br>Reading remainders from bottom to top gives: **1101** in binary. |
+| **Convert decimal 25 to binary.** | Divide 25 by 2 repeatedly and keep track of remainders:<br>• 25 / 2 = 12 with remainder **1**<br>• 12 / 2 = 6 with remainder **0**<br>• 6 / 2 = 3 with remainder **0**<br>• 3 / 2 = 1 with remainder **1**<br>• 1 / 2 = 0 with remainder **1**<br>Reading remainders from bottom to top gives: **11001** in binary. |
+| **Convert binary 1010 to decimal.** | Multiply each bit by powers of 2 starting from the right (power 0):<br>• (1 * 2^3) + (0 * 2^2) + (1 * 2^1) + (0 * 2^0)<br>• = 8 + 0 + 2 + 0<br>• = **10** in decimal. |
+| **Convert binary 1101 to decimal.** | Multiply each bit by powers of 2:<br>• (1 * 2^3) + (1 * 2^2) + (0 * 2^1) + (1 * 2^0)<br>• = 8 + 4 + 0 + 1<br>• = **13** in decimal. |
+| **Convert hexadecimal A to decimal.** | In hexadecimal: 0–9 are digits, and A=10, B=11, C=12, D=13, E=14, F=15.<br>• A = 10 * 16^0 = **10** in decimal. |
+| **Convert hexadecimal 1F to decimal.** | In hexadecimal, F represents 15.<br>• (1 * 16^1) + (15 * 16^0)<br>• = 16 + 15<br>• = **31** in decimal. |
+| **Convert binary 1111 to hexadecimal.** | First convert binary 1111 to decimal:<br>• (1 * 2^3) + (1 * 2^2) + (1 * 2^1) + (1 * 2^0) = 8 + 4 + 2 + 1 = 15.<br>In hexadecimal, the number 15 is represented by the letter **F** (or **0xF**). |
 
 ---
 
 ### Task 5.2 — Verify using Python
+I opened the terminal, ran `python3` to start the interactive prompt, and tested each conversion:
 
-| Target Conversion | Tested Python Expression | Python Result | Matches Manual Calculation? |
+| Conversion tested | Expression tested | Python result | Matches manual calculation? |
 | :--- | :--- | :--- | :--- |
-| Decimal 13 to binary | `bin(13)` | `'0b1101'` | Yes, matches `1101₂` |
-| Decimal 25 to binary | `bin(25)` | `'0b11001'` | Yes, matches `11001₂` |
-| Binary 1010 to decimal | `int("1010", 2)` | `10` | Yes, matches `10₁₀` |
-| Binary 1101 to decimal | `int("1101", 2)` | `13` | Yes, matches `13₁₀` |
-| Hexadecimal A to decimal | `int("A", 16)` | `10` | Yes, matches `10₁₀` |
-| Hexadecimal 1F to decimal | `int("1F", 16)` | `31` | Yes, matches `31₁₀` |
-| Binary 1111 to hexadecimal | `hex(0b1111)` | `'0xf'` | Yes, matches `F₁₆` |
+| Decimal 13 to binary | `bin(13)` | `'0b1101'` | Yes, matches `1101` |
+| Decimal 25 to binary | `bin(25)` | `'0b11001'` | Yes, matches `11001` |
+| Binary 1010 to decimal | `int("1010", 2)` | `10` | Yes, matches `10` |
+| Binary 1101 to decimal | `int("1101", 2)` | `13` | Yes, matches `13` |
+| Hexadecimal A to decimal | `int("A", 16)` | `10` | Yes, matches `10` |
+| Hexadecimal 1F to decimal | `int("1F", 16)` | `31` | Yes, matches `31` |
+| Binary 1111 to hexadecimal | `hex(0b1111)` | `'0xf'` | Yes, matches `F` |
+
+All Python results matched my manual step-by-step calculations.
 
 ---
 
 ### Task 5.3 — Build a small number converter
-Developed the Python converter script `number_converter.py` inside `mission-05-numbers-data/`.
-- Prompting user input via `input()`.
-- Parsing string input safely into integer with error handling (`int(..., 10)`).
-- Formatting binary with `bin()` and hexadecimal with `hex()`.
+I created `number_converter.py` in this folder. It asks the user to enter a positive decimal number, converts it to binary using `bin()` and to hexadecimal using `hex()`, and prints both outputs.
 
-#### Test Execution Records
+#### Program test runs:
 
-| Test Number (Decimal) | Binary Output (`bin()`) | Hexadecimal Output (`hex()`) |
+| Test number | Binary output | Hexadecimal output |
 | :--- | :--- | :--- |
-| **13** | `0b1101` (Clean: `1101`) | `0xD` (Clean: `D`) |
-| **25** | `0b11001` (Clean: `11001`) | `0x19` (Clean: `19`) |
-| **255** | `0b11111111` (Clean: `11111111`) | `0xFF` (Clean: `FF`) |
+| **13** | `0b1101` (or `1101`) | `0xd` (or `D`) |
+| **25** | `0b11001` (or `11001`) | `0x19` (or `19`) |
+| **255** | `0b11111111` (or `11111111`) | `0xff` (or `FF`) |
 
-#### Explanation of Python Conversion Functions
-- `bin(x)`: Takes an integer $x$ and returns a string prefixed with `'0b'` representing the number in two's complement binary notation (base 2).
-- `hex(x)`: Takes an integer $x$ and returns a lowercase string prefixed with `'0x'` representing the number in hexadecimal notation (base 16).
-- `int(string, base)`: Converts a number represented in a given numeric string format back into an integer using the specified positional radix/base (e.g., base 2 for binary, base 16 for hexadecimal).
+#### What the binary and hexadecimal conversion functions do:
+- `bin()` takes an integer number in Python and returns a string starting with `'0b'` showing that number in binary (base 2).
+- `hex()` takes an integer number in Python and returns a string starting with `'0x'` showing that number in hexadecimal (base 16).
 
 ---
 
 ### Task 5.4 — How is text stored?
 
-#### ASCII Decimal Code Findings
-- Uppercase **'A'**: ASCII Decimal **65** (Binary: `01000001`, Hex: `0x41`)
-- Lowercase **'a'**: ASCII Decimal **97** (Binary: `01100001`, Hex: `0x61`)
-*(Verified via Python using `ord('A')` and `ord('a')`)*
-
-#### Why Computers Need an Encoding Standard
-Because digital electronic hardware can only store and manipulate binary state charges (0s and 1s), computers cannot physically understand human alphabets or typographic glyphs directly. An encoding standard establishes a universal, unambiguous mapping contract between numeric binary values and human characters, ensuring that a text document created on one machine is interpreted and displayed identically on any other system worldwide.
-
-#### Character Outside Basic ASCII
-- **Indian Rupee symbol (`₹`)**: Unicode code point `U+20B9`. Basic 7-bit ASCII only covers codes 0 through 127 (English alphabet, digits, and control characters); modern multi-byte standards like UTF-8 use 3 bytes (`0xE0 0xA4 0xB9`) to represent the Rupee symbol.
+- **ASCII decimal codes for 'A' and 'a':**  
+  - Uppercase **'A'** has an ASCII decimal value of **65**.
+  - Lowercase **'a'** has an ASCII decimal value of **97**.  
+  *(I tested this in Python using `ord('A')` and `ord('a')`)*.
+- **Why does a computer need an encoding standard to store text?**  
+  Computers can only store numbers made of electrical 1s and 0s; they cannot store letters or symbols directly. An encoding standard assigns a specific number to every letter and symbol so computers always know which character to show on the screen when reading saved bytes.
+- **Example of a character not part of basic ASCII:**  
+  The Indian Rupee symbol **`₹`** (or emoji like **`😊`**) is not part of basic 7-bit ASCII, which only goes from 0 to 127. Characters like this need modern standards like UTF-8 to be stored.
 
 ---
 
 ## 3. Commands / tools used
-- Python 3 interactive shell: Verified mathematical conversions using `bin()`, `hex()`, `int()`, and `ord()`.
-- `python3 mission-05-numbers-data/number_converter.py`: Executed and tested the interactive conversion script.
-- Markdown editor: Documented the step-by-step arithmetic proofs.
-
----
+- Python 3 interactive shell to test functions like `bin()`, `hex()`, `int()`, and `ord()`.
+- `python3 mission-05-numbers-data/number_converter.py` to test the script with numbers `13`, `25`, and `255`.
 
 ## 4. My understanding
-All digital computation is grounded in number representation. While humans use base 10 (decimal) due to historical ten-finger counting, digital circuits utilize binary (base 2) because two voltage states (on/off, high/low) are physically reliable and noise-tolerant. Hexadecimal (base 16) serves as a human-friendly shorthand for binary, where every 4 binary bits (a nibble) maps exactly to 1 hex digit. Character encoding bridges mathematical bit patterns and human language communication, progressing from 7-bit ASCII to modern universal UTF-8.
-
----
+Everything inside a computer—numbers, code, images, and text—is made of bits (0s and 1s). Decimal uses base 10 because humans have ten fingers, but electronics work best with base 2 (switches are either on or off). Hexadecimal (base 16) is really convenient because exactly 4 binary bits make 1 hexadecimal character, making long binary strings much easier to read. Understanding ASCII and UTF-8 also explained why files sometimes get garbled if opened with the wrong text encoding.
 
 ## 5. Difficulties faced
-Handling negative numbers or invalid string inputs in the Python CLI script without causing the program to crash with an unhandled `ValueError`.
-
----
+When writing the converter, if the user typed text or letters instead of numbers, Python threw a `ValueError`.
 
 ## 6. How I resolved them
-Implemented Python `try-except` exception handling blocks around `int(user_input)` to intercept non-numeric characters gracefully and added input validation to ensure positive integers.
-
----
+I used `user_input.isdigit()` in the Python script to check whether the input consists of numbers before converting it with `int()`. If the user types anything invalid, the script displays a helpful message instead of crashing.
 
 ## 7. Evidence / files
-- `mission-05-numbers-data/number_converter.py`: Working Python converter script.
-- `mission-05-numbers-data/README.md`: Documented arithmetic derivations, Python verifications, and text-encoding analysis.
-
----
+- `mission-05-numbers-data/number_converter.py` (working script).
+- `mission-05-numbers-data/README.md`.
 
 ## 8. Commit details
 - Commit message: `Build number converter and practise data representation`
-- Status: Staged, committed, and pushed to `main` branch on GitHub.
+- Pushed to: `main` branch on GitHub.

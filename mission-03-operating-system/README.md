@@ -1,102 +1,86 @@
 # Mission 3 — Understand the operating system
 
 ## 1. Task / objective
-The objective of Mission 3 is to examine the core components and duties of the operating system (OS). This involves exploring the OS runtime environment, identifying current account context and storage utilization, analyzing active processes and Process Identifiers (PIDs), distinguishing between absolute and relative file paths, examining Unix file permission modes (`r`, `w`, `x`), and detailing the key operational responsibilities of modern operating systems.
-
----
+In this mission, I investigated my laptop's operating system environment. I checked system information, active user account, disk storage space, and inspected running processes and their Process IDs (PIDs). I also learned about absolute and relative paths, checked file permissions (`r`, `w`, `x`), and summarized the main jobs an operating system does.
 
 ## 2. Work completed
 
 ### Task 3.1 — Explore your operating system
 
-| Information Explored | What it tells you | Your Observation (privacy-safe) |
+| Information explored | What it tells you | Your observation (privacy-safe) |
 | :--- | :--- | :--- |
-| **Operating system / system details** (`uname -srm`, `sw_vers`) | Identifies the OS name, kernel release version, and hardware processor architecture. | macOS (Darwin Kernel 27.2.0, ARM64 Apple Silicon architecture) |
-| **Current account identity** (`whoami`, `id`) | Reveals the username and user ID (UID) of the currently logged-in interactive shell account. | Active user: `[redacted]` (UID: `501`, primary group: `staff`) |
-| **Available and used storage** (`df -h .`) | Displays filesystem capacity, disk space consumed, available free space, and mount points in human-readable units. | Filesystem: `/System/Volumes/Data`<br>Total: `926 GiB`<br>Used: `210 GiB` (24%)<br>Available: `692 GiB` |
-| **System activity snapshot** (`ps aux`, `top -l 1`) | Captures a point-in-time snapshot of active processes, CPU/memory consumption, state, and runtime. | Active CPU load moderate; top active tasks include user desktop apps (VS Code, Browser) and system daemons (`WindowServer`, `opendirectoryd`). |
+| **Operating system / system details** (`uname -srm`, `sw_vers`) | Shows the OS name, kernel version, and the processor type of my computer. | macOS (Darwin 27.2.0, arm64 Apple Silicon) |
+| **Current account identity** (`whoami`) | Shows the username of the user account currently logged into the terminal. | Active user account: `[redacted]` |
+| **Available and used storage** (`df -h .`) | Tells how much total space is on the drive, how much is used, and how much is still free. | Total size: `926 GiB`, Used: `210 GiB` (24%), Free: `692 GiB` |
+| **System activity snapshot** (`ps aux`) | Shows an instant snapshot of all programs and background services currently running in memory. | Active apps visible like VS Code and background macOS system services like `WindowServer`. |
 
 ---
 
 ### Task 3.2 — Understand processes
 
-#### Conceptual Questions
 - **What is a process?**  
-  A process is an active instance of a computer program currently being executed by the operating system. While a program stored on disk is passive code and data, a process is dynamic: it possesses its own address space in memory, execution threads, program counter, registers, open file descriptors, and allocated system resources.
+  A process is simply a program that is currently running in memory. When a program is just sitting on your hard drive or SSD, it is just a saved file. But when you double click it or run it in terminal, the operating system loads it into RAM and starts executing it—at that moment, it becomes a process.
 - **What does the PID column represent?**  
-  PID stands for **Process Identifier**. It is a unique numeric integer assigned by the operating system kernel to identify and track each running process during its lifetime. The OS kernel, user utilities, and system calls use the PID to signal, monitor, prioritize, or terminate (`kill`) processes.
-- **Two examples of processes running on the computer:**
-  1. **User Application Process**: Visual Studio Code / Web Browser (PID e.g. `10318`) — an interactive GUI application running in user space.
-  2. **System Background Daemon**: `WindowServer` (PID e.g. `404`) — a macOS system daemon responsible for compositing windows, rendering visual elements to displays, and handling system-level display events.
+  PID stands for **Process Identifier**. It is a unique number that the operating system assigns to each running process so it can keep track of them, manage their resources, or close them if needed.
+- **Give two examples of processes that may be running on your computer:**
+  1. `Visual Studio Code` (PID e.g. `10318`) - An application process running the text editor window.
+  2. `WindowServer` (PID e.g. `404`) - A background system process on macOS that manages and draws all the windows on the screen.
 
 ---
 
 ### Task 3.3 — Understand paths and permissions
 
-#### Absolute Paths vs. Relative Paths
-- **Absolute Path**: Specifies the exact, unambiguous location of a file or directory starting from the root of the filesystem (`/`). It is independent of the current working directory.
-  - *Example from assignment*: `/Users/[redacted]/Documents/Projects/digital-detective-8011/terminal-practice/note.txt`
-- **Relative Path**: Specifies a location relative to the shell's current working directory (`pwd`), using shorthand symbols like `.` (current directory) and `..` (parent directory).
-  - *Example from assignment*: `./terminal-practice/note.txt` or `../digital-detective-8011`
+#### Absolute vs Relative Paths
+- **Absolute path**: The full path that starts all the way from the root directory (`/`). It works no matter where you currently are in the terminal.
+  - *Example from my project*: `/Users/[redacted]/Documents/Projects/digital-detective-8011/terminal-practice/note.txt`
+- **Relative path**: A path that starts from your current folder, usually using `.` (this folder) or `..` (parent folder).
+  - *Example from my project*: `./terminal-practice/note.txt`
 
-#### File Permissions Analysis
-Inspected file: `terminal-practice/note.txt`  
-Command: `ls -l terminal-practice/note.txt`  
-Output: `-rw-r--r--  1 [redacted]  staff  70  note.txt`
+#### File Permissions
+When I ran `ls -l terminal-practice/note.txt`, the permissions showed: `-rw-r--r--`
 
-| Permission Bit | Meaning | Owner Rights on `note.txt` |
+| Permission | Meaning | Example from my practice file |
 | :--- | :--- | :--- |
-| **`r` (Read)** | Allows reading and viewing the file contents. | **Granted**: Owner can view and open the file. |
-| **`w` (Write)** | Allows modifying, appending, or overwriting file contents. | **Granted**: Owner can edit and save changes. |
-| **`x` (Execute)** | Allows running the file as a program or binary script (or entering a folder). | **Denied**: Owner cannot execute the file as a binary/script. |
+| **r — Read** | Allows reading or viewing the file contents. | As the owner, I have `r`, so I can open and view `note.txt`. |
+| **w — Write** | Allows editing, changing, or overwriting the file. | As the owner, I have `w`, so I can add text or modify `note.txt`. |
+| **x — Execute** | Allows running the file as a program or script. | As the owner, I have `-` (no `x`), so `note.txt` cannot be run as a program. |
 
-- **Summary**: The owner has Read and Write permissions (`rw-`), the group has Read-only (`r--`), and other users have Read-only (`r--`).
+The owner has Read and Write access (`rw-`), while group members and others only have Read access (`r--`).
 
 ---
 
 ### Task 3.4 — Explain operating-system responsibilities
 
-| OS Responsibility | Your Explanation | Real-World Example |
+| OS responsibility | Your explanation | Example |
 | :--- | :--- | :--- |
-| **Process Management** | Controls process creation, CPU scheduling (allocating processor time slices across multiple threads), process synchronization, and termination. | Switching execution between an active code editor, background music playback, and terminal commands seamlessly without freezing. |
-| **Memory Management** | Allocates, tracks, and deallocates portions of physical RAM to processes; provides virtual memory and paging to prevent programs from overwriting each other's memory. | Allocating 400 MB of RAM when opening a web browser and releasing that memory block back to the OS pool when the tab is closed. |
-| **Device Management** | Interfaces with hardware peripherals through standardized device drivers, translating generic software requests into hardware-specific control signals. | Receiving input packets from a USB/Bluetooth keyboard or sending raster lines to a printer via a print spooler. |
-| **File Management** | Organizes data into structured files and hierarchical directories on storage drives, handling allocation tables, read/write caching, and file metadata. | Reading and writing file data to APFS or ext4 storage blocks when saving `note.txt`. |
-| **User Interface / Shell** | Provides an interface (Graphical User Interface like macOS Aqua or Command-Line Interface like zsh/bash) for humans to interact with system services. | Accepting typed commands like `ls` or `pwd` in the zsh Terminal or double-clicking an application icon on the desktop. |
-| **Security and Permissions** | Enforces access control policies, authenticates users, isolates process memory spaces, and restricts unauthorized read/write/execute operations on protected system resources. | Preventing a normal user process from modifying system files in `/System` or executing privileged kernel extensions without explicit administrator authorization. |
+| **Process management** | Makes sure multiple programs can run at the same time by sharing CPU time between them fairly. | Letting me listen to music on Spotify while typing code in VS Code without either app freezing. |
+| **Memory management** | Decides which app gets how much RAM and frees up memory when an app is closed. | Giving 500 MB of RAM to Chrome when I open tabs, and giving that memory back when I close Chrome. |
+| **Device management** | Communicates with connected hardware (like mouse, keyboard, printer) using device drivers. | Detecting when I plug in a USB mouse and translating mouse movements into the cursor moving on screen. |
+| **File management** | Keeps all files and folders organized on the SSD, and keeps track of where data is stored. | Creating, saving, and organizing folders like `mission-00-setup` and files on my disk. |
+| **User interface / shell** | Provides a way for humans to interact with the computer, either through desktop icons (GUI) or typed commands (CLI). | Clicking on app icons in the macOS Dock or typing commands in the zsh Terminal window. |
+| **Security and permissions** | Protects system files and prevents unauthorized apps or users from changing important data. | Asking for my password/Touch ID before installing new software, and preventing standard apps from modifying system files. |
 
 ---
 
 ## 3. Commands / tools used
-- `uname -srm`: Identified operating system kernel name, release, and hardware architecture.
-- `sw_vers`: Inspected macOS product name and build version.
-- `whoami` & `id`: Verified active user account and group identity.
-- `df -h .`: Inspected disk volume usage and remaining capacity.
-- `ps aux`: Inspected process table, PIDs, and resource utilization.
-- `ls -l`: Inspected file permission bits, ownership, and links.
-
----
+- `uname -srm`, `sw_vers` - Checked OS details and kernel version.
+- `whoami` - Checked the active terminal user account.
+- `df -h .` - Checked available and used disk storage space.
+- `ps aux` - Looked at the list of running processes and their PIDs.
+- `ls -l` - Inspected file permissions on practice files.
 
 ## 4. My understanding
-The operating system acts as the master coordinator between physical computer hardware and user applications. Without an OS, every software application would need to implement its own device drivers, memory allocators, and hardware timers. By abstracting hardware behind system calls, enforcing process isolation through virtual memory, and safeguarding file permissions, the OS ensures system stability, multitasking concurrency, and security.
-
----
+Before this mission, I thought of an operating system just as the visual interface (like the desktop and menus). But now I understand that the OS does all the hard background work: it stops programs from crashing into each other's memory, schedules the CPU so multiple apps run smoothly, handles file storage, and makes sure one user cannot accidentally modify protected system files.
 
 ## 5. Difficulties faced
-Understanding how processes share CPU cores concurrently even when there are more running threads than physical hardware cores.
-
----
+Reading the long table from `ps aux` was a bit overwhelming at first because hundreds of system processes were listed on the screen.
 
 ## 6. How I resolved them
-Researched OS CPU scheduling and time-slicing (preemptive multitasking): the kernel rapidly switches the CPU between threads using timer interrupts, giving each process small execution slices so they appear to run simultaneously.
-
----
+I used `head -n 10` with a pipe (`ps aux | head -n 10`) to look at just the top few lines and read the column headers (`USER`, `PID`, `%CPU`, `COMMAND`) carefully to find specific apps like VS Code.
 
 ## 7. Evidence / files
-- `mission-03-operating-system/README.md`: Complete OS investigation tables, process analysis, path/permission breakdowns, and OS responsibility explanations.
-
----
+- `mission-03-operating-system/README.md` with system inspection tables, process notes, and OS responsibilities.
 
 ## 8. Commit details
 - Commit message: `Document operating system and file management`
-- Status: Staged, committed, and pushed to `main` branch on GitHub.
+- Pushed to: `main` branch on GitHub.

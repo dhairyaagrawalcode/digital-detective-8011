@@ -1,89 +1,66 @@
 # Mission 1 — Know your computer
 
 ## 1. Task / objective
-The goal of Mission 1 is to understand the fundamental architecture of computer systems, specifically the IPOS cycle (Input, Processing, Output, Storage), classify essential computer hardware and software categories (system, application, and utility software), and analyze real-world embedded or computer-based systems encountered in everyday life.
-
----
+In this mission, I explored how computers take input, process it, show output, and save data (the IPOS model). I also categorized different hardware and software that I use on my laptop, and looked at three examples of computer systems we see around us in daily life.
 
 ## 2. Work completed
 
 ### Task 1.1 — Trace one activity using IPOS
-**Activity Selected**: Typing and saving a programming script (e.g., creating a Python program in an editor).
+**Activity chosen**: Typing and saving a note or code file on my laptop.
 
 | Stage | What happens in your example? | Possible hardware / component |
 | :--- | :--- | :--- |
-| **Input** | Keystrokes are pressed by the user. Each key switch generates an electrical signal translated into an ASCII/UTF-8 character code and sent to the computer controller via USB or internal bus. | Keyboard / Touchpad |
-| **Processing** | The CPU receives interrupts from the keyboard, loads the character codes into main memory (RAM), calculates formatting, and renders the updated text buffer through the application logic. | CPU (Processor) and RAM (Memory) |
-| **Output** | The graphics subsystem converts the text data from the display framebuffer into pixels, rendering the characters instantly on the monitor so the programmer can read what was typed. | Display / Monitor (Retina screen) |
-| **Storage** | When the user triggers the Save command (`Cmd+S` / `Ctrl+S`), the operating system transfers the text buffer from volatile RAM across the storage bus to persistent non-volatile flash memory on the SSD. | Solid State Drive (SSD) / Flash Storage |
+| **Input** | I press keys on my keyboard to type code or text into the editor. | Keyboard |
+| **Processing** | The CPU receives the keystroke signals, stores the characters temporarily in RAM, and figures out how to display the text. | CPU and RAM (Memory) |
+| **Output** | The screen displays the letters I just typed so I can see my code in the text editor. | Display / Screen |
+| **Storage** | When I press Save (`Cmd+S`), the operating system writes the file from RAM onto the solid state drive so it doesn't get lost when the laptop turns off. | SSD (Solid State Drive) |
 
-#### Data Flow Explanation
-1. **Input to Processing**: When a key is tapped on the keyboard, hardware interrupts alert the operating system kernel. The keyboard controller translates physical key depressions into scan codes and stores them into an input queue in memory (RAM).
-2. **Processing to Output**: The text editor application reads the scan codes from memory, updates its internal text buffer in RAM, and makes draw calls to the graphics rendering engine. The GPU processes these draw calls and writes the visual raster data to the display buffer, which refreshes the monitor screen at 60Hz/120Hz.
-3. **Processing to Storage**: The in-memory buffer in RAM is volatile; turning off the computer would erase it. When the save operation is invoked, the OS file management subsystem allocates filesystem blocks on the SSD, writes the stream of bytes from RAM to flash blocks, and commits the file metadata (name, size, timestamp) to the drive.
+#### How the activity moves from input to output and storage:
+When I press a key on the keyboard, it sends an electrical signal to the computer. The CPU and operating system catch this input and place it in the computer's temporary memory (RAM). The CPU tells the graphics processor to draw the letter on the screen so I can immediately see what I typed. When I am done and hit Save, the computer moves that text from temporary RAM to permanent storage on my SSD, creating a file that stays safe even after restarting.
 
 ---
 
 ### Task 1.2 — Identify hardware and software
 
-| Item / Software Name | Hardware or Software? | Software Type (if applicable) | Purpose |
+| Item / software name | Hardware or software? | Software type (if applicable) | Purpose |
 | :--- | :--- | :--- | :--- |
-| **Mechanical Keyboard** | Hardware | Not applicable | Captures physical keypresses and inputs textual data and shortcut commands. |
-| **Apple M-Series CPU/GPU** | Hardware | Not applicable | Executes computational instructions, manages registers, and processes graphics. |
-| **Liquid Retina Display** | Hardware | Not applicable | Presents graphical user interface (GUI) and visual outputs to the user. |
-| **NVMe SSD Storage** | Hardware | Not applicable | Provides persistent non-volatile long-term storage for the OS, apps, and documents. |
-| **macOS** | Software | Operating system software | Manages system resources (CPU scheduling, memory, file system, hardware abstraction). |
-| **Visual Studio Code** | Software | Application software | Integrated code editor providing syntax highlighting, file editing, and terminal integration. |
-| **Google Chrome** | Software | Application software | Web browser used for internet browsing, researching documentation, and web app usage. |
-| **Activity Monitor** | Software | Utility software | System utility that tracks CPU usage, RAM allocations, disk reads/writes, and process activity. |
-| **Disk Utility** | Software | Utility software | Diagnoses disk integrity, manages storage partitions, and formats volumes. |
+| **Keyboard** | Hardware | Not applicable | Used to enter text, commands, and numbers into the computer. |
+| **Monitor / Display** | Hardware | Not applicable | Displays the visual desktop, windows, and apps to the user. |
+| **Apple M-series chip (CPU/GPU)** | Hardware | Not applicable | Executes instructions, runs calculations, and processes graphics. |
+| **Internal SSD** | Hardware | Not applicable | Stores files, programs, and the operating system permanently. |
+| **macOS** | Software | Operating system software | Manages all the hardware resources, memory, and files, and lets apps run. |
+| **VS Code** | Software | Application software | A code editor used for writing code, editing files, and running terminal commands. |
+| **Google Chrome** | Software | Application software | Web browser used to search for information, read tutorials, and view websites. |
+| **Activity Monitor** | Software | Utility software | A built-in tool that shows how much CPU, memory, and energy different apps are using. |
 
 ---
 
 ### Task 1.3 — Computer systems around you
 
-| System | Main Purpose | One Input | One Output |
+| System | Main purpose | One input | One output |
 | :--- | :--- | :--- | :--- |
-| **Automated Teller Machine (ATM)** | Enables self-service banking transactions, cash withdrawals, and account balance queries. | Numeric PIN keypad / EMV chip card reader | Physical cash dispenser / printed receipt slip / display screen |
-| **Smart Traffic Signal Controller** | Automates traffic light sequences based on road congestion, pedestrian calls, and scheduled intervals. | Inductive road loop sensors / pedestrian crossing push-button | Traffic signal lamps (Red, Yellow, Green) / pedestrian countdown timer |
-| **Smart Television** | Receives, decodes, and streams digital multimedia content and runs on-demand applications. | Infrared (IR) or Bluetooth remote control / built-in microphone for voice commands | 4K display panel / audio speaker system |
-| **Metro Ticket Vending Machine (TVM)** | Issues transit cards/tokens and processes commuter fares automatically. | Touchscreen fare selection / currency bill & coin validator | Dispensed smart travel token / printed paper ticket |
+| **ATM (Cash Machine)** | Lets people withdraw cash and check bank balances safely without going inside the bank. | Keypad where you type your PIN / Card reader | Cash dispenser slot / receipt printed out / screen message |
+| **Smart TV** | Lets you watch movies and stream shows from apps like Netflix or YouTube. | Remote control buttons or voice search button | Big TV screen displaying video / built-in speakers for sound |
+| **Traffic Light Controller** | Changes traffic lights automatically to keep road traffic moving safely. | Road sensors detecting cars waiting, or pedestrian crossing button | Colored signal lights (Red, Yellow, Green) |
 
 ---
 
 ## 3. Commands / tools used
-- Text Editor (VS Code / Markdown editor): Used to draft and structure the observation tables.
-- Terminal: Used to confirm system hardware architecture (`sysctl -n machdep.cpu.brand_string` / `uname -m`).
-- Activity Monitor: Inspected as an example of built-in utility software managing background tasks.
-
----
+- Text editor (VS Code) to write down notes and format the markdown tables.
+- My MacBook's system settings to check my hardware specs.
 
 ## 4. My understanding
-A computer is fundamentally an information transformation machine built upon the IPOS cycle:
-- Without **Input**, the computer has no data to act upon.
-- Without **Processing**, data cannot be organized, transformed, or evaluated.
-- Without **Output**, results cannot be communicated or acted upon by human users or other machines.
-- Without **Storage**, state is lost immediately when power is removed because RAM is volatile.
-
-Software acts as the instruction layer that makes hardware purposeful. Operating systems form the foundation by arbitrating hardware access, application software fulfills specific end-user goals, and utility software preserves the health, security, and performance of the computing environment. Modern embedded systems like ATMs and smart traffic controllers demonstrate that computing principles extend far beyond traditional personal computers into ubiquitous physical infrastructure.
-
----
+Before this mission, I just thought of a computer as a screen and a keyboard where I write code or browse the web. Working through IPOS made me realize that every single thing we do—even just typing one letter—follows the exact same flow: input comes in, the processor and RAM handle it, the screen shows it, and storage saves it permanently. I also learned the clear difference between system software (which runs the whole machine), application software (which we use for our work), and utility software (which helps maintain and monitor the system).
 
 ## 5. Difficulties faced
-Distinguishing clearly between utility software and operating system software, as many modern utilities come bundled directly with the operating system (e.g., Disk Utility, Activity Monitor).
-
----
+At first, it was a bit confusing to decide whether Activity Monitor counts as operating system software or utility software since it comes pre-installed on macOS.
 
 ## 6. How I resolved them
-Clarified the definition: the operating system is the core platform managing fundamental operations and resource allocation (kernel, device drivers, shell), whereas utility software consists of specialized maintenance tools that analyze, configure, optimize, or protect the system, regardless of whether they are bundled with the OS or installed separately.
-
----
+I realized that macOS is the actual operating system managing the hardware underneath, while Activity Monitor is a specific utility tool created to help users inspect CPU and memory usage. So classifying it as utility software makes the most sense.
 
 ## 7. Evidence / files
-- `mission-01-computer-basics/README.md`: Completed IPOS, hardware/software, and everyday system tables.
-
----
+- `mission-01-computer-basics/README.md` with all completed tables and explanations.
 
 ## 8. Commit details
 - Commit message: `Complete computer basics and IPOS mission`
-- Status: Staged, committed, and pushed to `main` branch on GitHub.
+- Pushed to: `main` branch on GitHub.

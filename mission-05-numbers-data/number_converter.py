@@ -1,33 +1,25 @@
-"""
-Digital Detective - Mission 5: Number Systems and Data
-Interactive Number Converter
-Converts a positive decimal integer into binary and hexadecimal representations.
-"""
+# Mission 5 - Number Converter
+# Student: Dhairya Agrawal (2402608011)
 
-def main():
-    print("=" * 45)
-    print("     DIGITAL DETECTIVE - NUMBER CONVERTER    ")
-    print("=" * 45)
+def convert_number():
+    print("--- Number Converter ---")
+    user_input = input("Enter a positive decimal number: ").strip()
     
-    user_input = input("Enter a positive decimal integer: ").strip()
+    # Check if the input is a valid positive integer
+    if not user_input.isdigit():
+        print("Error: Please enter a positive whole number.")
+        return
     
-    try:
-        decimal_val = int(user_input)
-        if decimal_val < 0:
-            print("Error: Please enter a positive integer.")
-            return
-            
-        binary_str = bin(decimal_val)       # converts integer to binary format (with '0b' prefix)
-        hex_str = hex(decimal_val)          # converts integer to hexadecimal format (with '0x' prefix)
-        
-        print("\n--- Conversion Results ---")
-        print(f"Decimal Value     : {decimal_val}")
-        print(f"Binary Format     : {binary_str} (Clean: {binary_str[2:]})")
-        print(f"Hexadecimal Format: {hex_str.upper().replace('0X', '0x')} (Clean: {hex_str[2:].upper()})")
-        print("-" * 45)
-        
-    except ValueError:
-        print(f"Error: '{user_input}' is not a valid integer.")
+    num = int(user_input)
+    
+    # Convert using Python's built-in functions
+    bin_output = bin(num)
+    hex_output = hex(num)
+    
+    print("\nResults:")
+    print("Decimal    :", num)
+    print("Binary     :", bin_output, f"(without prefix: {bin_output[2:]})")
+    print("Hexadecimal:", hex_output, f"(without prefix: {hex_output[2:].upper()})")
 
 if __name__ == "__main__":
-    main()
+    convert_number()
